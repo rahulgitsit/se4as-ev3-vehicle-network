@@ -3,10 +3,10 @@ This project implements a self-driving vehicular network using Lego Mindstorms E
 
 SE4AS - Mindstorms EV3 Autonomous Vehicle.pdf - Project Report
 
-Code of Normal Vehicle - ev3_av_1
+ev3_av_1 - Code of Normal Vehicle
 
-Code of Emergency Vehicle - ev3_emergency_vehicle
+ev3_emergency_vehicle - Code of Emergency Vehicle 
 
-Code of Main server - ev3_pc_server
+ev3_pc_server - Code of Main server
 
-code of PC-client - ev3_pc_server
+ev3_pc_server - code of PC-client
