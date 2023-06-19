@@ -4,7 +4,9 @@ from mape.comms import Comms
 from mape.monitor import Monitor
 from mape.analyser import Analyser
 from mape.planner import Planner
-from mape.executor import Executor
+from mape.executor import Executer
+
+from pybricks.parameters import Port
 
 # import random
 
@@ -14,13 +16,13 @@ if __name__ == "__main__":
     monitor = Monitor(kbase, Port.S3, Port.S4, Port.S1)
     analyser = Analyser(kbase)
     planner = Planner(kbase)
-    executor = Executer(kbase)
+    executer = Executer(kbase, comms)
     # emergency = False
 
     comms.connect("C8:E2:65:CD:69:86")
     while True:
         # parking = False
-        emergency_flag = random.randint(1, 170)
+        # emergency_flag = random.randint(1, 170)
 
         # if emergency_flag == 73 and not emergency:
         #     print("Emergency activated! - Rand Gen")
@@ -38,4 +40,4 @@ if __name__ == "__main__":
             crash,
         )
         plan = planner.derive_plan(analysis)
-        executor.execute(plan)
+        executer.execute(plan)

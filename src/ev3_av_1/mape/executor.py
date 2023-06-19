@@ -9,8 +9,8 @@ from pybricks.media.ev3dev import Font, SoundFile
 
 class Executer:
     def __init__(
-        self, knowledge_base, left_motor_port=Port.B, right_motor_port=Port.C
-    ) -> None:
+        self, knowledge_base, comms, left_motor_port=Port.B, right_motor_port=Port.C
+    ):
         self.kbase = knowledge_base
         self.comms = comms
         self.left_motor = Motor(left_motor_port)
@@ -23,7 +23,7 @@ class Executer:
         self.ev3.screen.set_font(self.big_font)
 
     def execute(self, plan):
-        self.ev3.screen.draw_text(60, 50, "AV" + str(kbase.id_))
+        self.ev3.screen.draw_text(60, 50, "AV" + str(self.kbase.id_))
         if plan == "P0-crash":
             self.robot.stop()
             self.kbase.travelled_distance = self.robot.distance()

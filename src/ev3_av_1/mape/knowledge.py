@@ -1,4 +1,8 @@
 #!/usr/bin/env pybricks-micropython
+from pybricks.parameters import Color
+from pybricks.tools import DataLog, StopWatch, wait
+
+
 class KnowledgeBase:
     DRIVE_SPEED = 70
     NORMAL_SPEED = 70

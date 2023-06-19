@@ -1,5 +1,4 @@
 #!/usr/bin/env pybricks-micropython
-from pybricks.tools import DataLog, StopWatch, wait
 from pybricks.messaging import BluetoothMailboxClient, NumericMailbox, LogicMailbox
 
 
