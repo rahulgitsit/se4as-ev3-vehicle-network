@@ -60,8 +60,8 @@ class Planner:
                 self.obj_know.step=0
                 self.obj_know.previousStateChangedTime=self.obj_know.cotime
     
-    def speedcontrol(self,dis): # control speed based on obstacle presence, emergency situtation etc
-        distance=dis
+    def speedcontrol(self): # control speed based on obstacle presence, emergency situtation etc
+        distance=self.obj_know.distance
         if self.obj_know.step == 1 or self.obj_know.step == 3:
             self.obj_know.DRIVE_SPEED=self.obj_know.MINIMUM_SPEED
         elif self.obj_know.emergency==1 and (self.obj_know.watch.time()-self.obj_know.cotime)>10000:
@@ -79,8 +79,8 @@ class Planner:
             self.obj_know.DRIVE_SPEED=self.obj_know.MINIMUM_SPEED
     
 
-    def robotmovement(self,rel): # update constant values, calculate turn rate..!!
-        color=rel
+    def robotmovement(self): # update constant values, calculate turn rate..!!
+        color=self.obj_know.reflection
         if not self.obj_know.stopping and self.obj_know.emergency==1 and self.obj_know.park==0:
             self.obj_know.deviation = color - self.obj_know.threshold
             if self.obj_know.deviation > -10 and self.obj_know.deviation < 10:
