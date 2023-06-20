@@ -1,5 +1,5 @@
 #!/usr/bin/env pybricks-micropython
-from pybricks.messaging import BluetoothMailboxClient, NumericMailbox, LogicMailbox
+from pybricks.messaging import BluetoothMailboxClient, NumericMailbox, LogicMailbox,TextMailbox
 class Communication:
     def __init__(self):
         self.SERVER = 'C8:E2:65:CD:69:86'
@@ -13,6 +13,7 @@ class Communication:
         self.embox_emergencyover = NumericMailbox("emergency1", self.client)
         self.embox_traveldistance= NumericMailbox("travel_distance2",self.client)
         self.embox_restart= LogicMailbox("restart2",self.client)
+        self.embox_sensor=TextMailbox("sensor2",self.client)
 
     def connect_server(self):
         print('establishing connection...')
@@ -27,6 +28,5 @@ class Communication:
         self.emerg=self.embox_emer.read()
         self.v_speed=self.embox_speed.read()
         self.v_lane=self.embox_lane.read()
-        self.v_distance=self.embox_distance.read()
         self.v_time=self.embox_time.read()
         self.v_travel=self.embox_traveldistance.read()
