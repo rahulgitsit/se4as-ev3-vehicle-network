@@ -11,10 +11,9 @@ class Moniter:
         self.touch_sensor = TouchSensor(portc)
     
     def sensor_reader(self):
-        rgb=self.line_sensor.rgb()
-        reflection=self.line_sensor.reflection()
-        color=self.line_sensor.color()
-        distance=self.obstacle_sensor.distance()
-        touch= self.touch_sensor.pressed()
-        return rgb,reflection,color,distance, touch
+        self.obj_know.rgb=self.line_sensor.rgb()
+        self.obj_know.reflection=self.line_sensor.reflection()
+        self.obj_know.color=self.line_sensor.color()
+        self.obj_know.distance=self.obstacle_sensor.distance()
+        self.obj_know.touch= self.touch_sensor.pressed()
 
