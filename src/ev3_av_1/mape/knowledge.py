@@ -57,6 +57,13 @@ class KnowledgeBase:
         self.plan = None
         self.park_lot_distance = 0
 
+        # sensor readings
+        self.reflection = 0.0
+        self.color = None
+        self.rgb = (0, 0, 0)
+        self.distance = 0.0
+        self.crash = False
+
         self.watch = StopWatch()
         self.watch.reset()
 

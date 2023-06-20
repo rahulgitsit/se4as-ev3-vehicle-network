@@ -1,5 +1,10 @@
 #!/usr/bin/env pybricks-micropython
-from pybricks.messaging import BluetoothMailboxClient, NumericMailbox, LogicMailbox
+from pybricks.messaging import (
+    BluetoothMailboxClient,
+    NumericMailbox,
+    LogicMailbox,
+    TextMailbox,
+)
 
 
 class Comms:
@@ -13,6 +18,7 @@ class Comms:
         self.mbox_lane = NumericMailbox("lane" + str(id_), self.client)
         self.mbox_speed = NumericMailbox("speed" + str(id_), self.client)
         self.mbox_distance = NumericMailbox("distance" + str(id_), self.client)
+        self.mbox_sensor_data = TextMailbox("sensor" + str(id_), self.client)
         self.mbox_parking = NumericMailbox(
             "parking" + str(id_), self.client
         )  # from server
@@ -41,6 +47,15 @@ class Comms:
         self.mbox_lane.send(self.kbase.step)
         self.mbox_speed.send(self.kbase.DRIVE_SPEED)
         self.mbox_distance.send(self.kbase.distance)
+        message = (
+            str(self.kbase.color)
+            + ";"
+            + str(self.kbase.reflection)
+            + ";"
+            + str(self.kbase.rgb)
+        )
+        if message:
+            self.mbox_sensor_data.send(message)
         # self.mbox_parking.send(self.kbase.park_ack)
         # self.mbox_emergency.send(emergency)
         self.mbox_crash.send(self.kbase.crash)
