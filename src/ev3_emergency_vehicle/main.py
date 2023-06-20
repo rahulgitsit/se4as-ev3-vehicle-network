@@ -22,7 +22,7 @@ if __name__=="__main__":
     motor=Servomotors()
     knowledge=Knowledgebase.Knowledgebase(motor)
     moniter=Moniter.Moniter(knowledge)
-    analyser=Analysis.Analysis(moniter,knowledge,comm)
+    analyser=Analysis.Analysis(knowledge,comm)
     planner=Planner.Planner(knowledge)
     executer=Executer.Executer(knowledge,ev3,comm)  
     ev3.screen.set_font(knowledge.big_font)
@@ -31,9 +31,8 @@ if __name__=="__main__":
     while True: 
         comm.read_all_values()
         rgb,reflection,color,distance,touch= moniter.sensor_reader()
-        if touch == True:
         if knowledge.emergency==0:
-             t=analyser.emerg_alert()
+            t=analyser.emerg_alert()
 
         if t in [10,12]:
             y=analyser.direction_decider()
@@ -53,7 +52,7 @@ if __name__=="__main__":
                 executer.vehicle_detection()
             executer.impact_det(touch)
             robo=planner.robotmovement(reflection)
-            executer.robotaction(robo)
+            executer.robotaction(robo,distance,color,reflection,rgb)
             
             
             
