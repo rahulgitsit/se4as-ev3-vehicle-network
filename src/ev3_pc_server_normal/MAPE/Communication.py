@@ -1,4 +1,4 @@
-from pybricks.messaging import BluetoothMailboxServer, NumericMailbox
+from pybricks.messaging import BluetoothMailboxServer, NumericMailbox, TextMailbox
 class Communication:
     def __init__(self):
         self.server = BluetoothMailboxServer()
@@ -24,6 +24,7 @@ class Communication:
         self.mbox1_crash=NumericMailbox("crash1",self.server)
         self.mbox1_server_ack=NumericMailbox('ack1',self.server)
         self.mbox1_travel=NumericMailbox('travel_distance1',self.server)
+        self.mbox1_sensor=TextMailbox("sensor1",self.server)
         
 
         # second normal vehicle mailbox
@@ -37,6 +38,7 @@ class Communication:
         self.mbox2_crash=NumericMailbox("crash2",self.server)
         self.mbox2_server_ack=NumericMailbox('ack2',self.server)
         self.mbox2_travel=NumericMailbox('travel_distance2',self.server)
+        self.mbox2_sensor=TextMailbox("sensor2",self.server)
 
         #read from pc_client
         self.admin_cmd=self.admin_command.read()
@@ -52,6 +54,7 @@ class Communication:
         self.front_crash=self.mbox1_crash.read()
         self.front_ack=self.mbox1_server_ack.read()
         self.front_travel=self.mbox1_travel.read()
+        self.front_sensor=self.mbox1_sensor.read()
 
 
         #read from normal vehicle
@@ -65,4 +68,4 @@ class Communication:
         self.second_crash=self.mbox2_crash.read()
         self.second_ack=self.mbox2_server_ack.read()
         self.second_travel=self.mbox2_travel.read()
-
+        self.second_sensor=self.mbox2_sensor.read()
