@@ -6,7 +6,7 @@ class Planner:
 
 
     def emerg_situation(self,dir,x):
-        knowledge.time=knowledge.watch.time()
+        self.obj_know.time=self.obj_know.watch.time()
         self.obj_know.lane=x
         if self.obj_know.emerg_det==0:
             self.obj_know.istouch=0
