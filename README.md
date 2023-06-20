@@ -13,7 +13,8 @@ The source code is organized into the following directories:
 
 - [/src/ev3_av_1](/src/ev3_av_1): Normal Vehicle
 - [/src/ev3_emergency_vehicle](/src/ev3_emergency_vehicle): Emergency Vehicle
-- [/src/ev3_pc_server](/src/ev3_pc_server_emergency): Main Server
+- [/src/ev3_pc_server](/src/ev3_pc_server_emergency): Main Server with Emergency Vehicle
+- [/src/ev3_pc_server](/src/ev3_pc_server_normal): Main Server without Emergency Vehicle
 - [/src/ev3_pc_client](/src/ev3_pc_client): PC Client to simulate the third vehicle/Admin
 
 The source codes in ev3_av_1 and ev3_emergency_vehicle are to be executed in the Lego Mindtorms EV3 devices after [installing](https://pybricks.com/install/mindstorms-ev3/installation/) Pybrick on it. The ev3_pc_server needs to be run on a linux environment.
