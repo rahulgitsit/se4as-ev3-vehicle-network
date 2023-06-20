@@ -1,6 +1,8 @@
+import datetime
 class Moniter:
-    def __init__(self,obj_comm):
+    def __init__(self,obj_comm,obj_know):
         self.obj_comm=obj_comm
+        self.obj_know=obj_know
     
     def read_mailbox(self):
         self.obj_comm.admin_cmd=self.obj_comm.admin_command.read()
@@ -14,6 +16,12 @@ class Moniter:
         self.obj_comm.front_crash=self.obj_comm.mbox1_crash.read()
         self.obj_comm.front_ack=self.obj_comm.mbox1_server_ack.read()
         self.obj_comm.front_travel=self.obj_comm.mbox1_travel.read()
+        self.obj_comm.front_sensor=self.obj_comm.mbox1_sensor.read()
+        p=self.obj_comm.mbox1_sensor.read()
+        if p!=None:
+            p=p.split(";")
+        else:
+            p=[0,0,0]
 
         self.obj_comm.second_id = self.obj_comm.mbox2_id.read()
         self.obj_comm.second_time = self.obj_comm.mbox2_time.read()
@@ -25,3 +33,18 @@ class Moniter:
         self.obj_comm.second_crash=self.obj_comm.mbox2_crash.read()
         self.obj_comm.second_ack=self.obj_comm.mbox2_server_ack.read()
         self.obj_comm.second_travel=self.obj_comm.mbox2_travel.read()
+        self.obj_comm.second_sensor=self.obj_comm.mbox2_sensor.read()
+        s=self.obj_comm.mbox2_sensor.read()
+        if s !=None:
+            s=s.split(";")
+        else:
+            s=[0,0,0]
+        t=datetime.datetime.now()
+        if self.obj_comm.front_speed!=None:
+            if  self.obj_comm.front_speed>0:
+                list1=[t,self.obj_comm.front_lane,self.obj_comm.front_speed,self.obj_comm.front_parking,self.obj_comm.front_distance,p[0],p[1],p[2]]
+                self.obj_know.write_normalav1_log(list1)
+        if self.obj_comm.second_speed!=None:
+            if self.obj_comm.second_speed>0:
+                list2=[t,self.obj_comm.second_speed,self.obj_comm.second_lane,self.obj_comm.second_parking,self.obj_comm.second_distance,s[0],s[1],s[2]]
+                self.obj_know.write_normalav2_log(list2)
