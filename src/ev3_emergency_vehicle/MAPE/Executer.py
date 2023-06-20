@@ -9,18 +9,14 @@ class Executer:
         self.obj_ev3=obj_ev3
         self.obj_comm=obj_comm
     
-    def emerg_movement(self,colour):
+    def emerg_movement(self):
         
         p=0
         while p<6:
             self.obj_comm.embox_emer.send(100)
             p=p+1
-        colours=colour
         self.obj_ev3.speaker.play_file(SoundFile.MOTOR_START)
         self.obj_know.robot.turn(90)
-        # while colours==Color.BLACK:
-        #             self.obj_know.robot.drive(self.obj_know.DRIVE_SPEED, 0)
-        #             colours=self.obj_know.getcolor()
         if self.obj_know.lane==10:
             self.obj_know.robot.straight(150)
             self.obj_know.robot.turn(80*self.obj_know.turning)
@@ -49,7 +45,8 @@ class Executer:
         self.obj_know.robot.straight(-50)
         self.obj_know.robot.turn(180)
     
-    def impact_det(self,touch):
+    def impact_det(self):
+        touch=self.obj_know.touch
         if touch == True and self.obj_know.istouch==0 and self.obj_know.back_from_emerg==1:
             self.obj_know.istouch=1
             co=0
@@ -63,6 +60,10 @@ class Executer:
 
 
     def robotaction(self,a,distance,color,reflection,rgb): # movement of robot
+        distance=self.obj_know.distance
+        color=self.obj_know.color
+        reflection=self.obj_know.reflection
+        rgb=self.obj_know.rgb
         if color!=None and reflection!=None and rgb!=None:
             s=str(color)+";"+str(reflection)+";"+str(rgb)
             self.obj_comm.embox_sensor.send(s)
