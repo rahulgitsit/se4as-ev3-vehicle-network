@@ -99,13 +99,11 @@ class Executer:
                 while q<6:
                     p.send(self.obj_knw.ack)
                     q=q+1
-                print("Ack sent")
                 s.send(code)
                 recv=s.read()
                 while recv!=100:
                     s.send(code)
                     recv=s.read()
-                print("Alert sent", code)
             
             
 
