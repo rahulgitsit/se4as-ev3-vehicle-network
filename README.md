@@ -5,7 +5,7 @@ This project implements a self-driving vehicular network using Lego Mindstorms E
 
 This repository contains the following files and directories:
 
-- [SE4AS - Mindstorms EV3 Autonomous Vehicle.pdf](SE4AS%20-%20Mindstorms%20EV3%20Autonomous%20Vehicle.pdf): Project Report
+- [SE4AS - Mindstorms EV3 Autonomous Vehicle.pdf](SE4AS_%20Mindstorms%20EV3%20Autonomous%20Vehicle%20Report.pdf): Project Report
 
 ## Source Code
 
