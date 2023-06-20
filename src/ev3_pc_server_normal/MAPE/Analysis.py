@@ -8,7 +8,6 @@ class Analysis:
         y=self.obj_comm.second_crash
         if (self.obj_comm.admin_cmd and self.obj_comm.admin_cmd>0 and self.obj_comm.admin_cmd != self.obj_know.perv_cmd) or x in [10,12] or y in [10,12]:
             if self.obj_comm.admin_cmd in [10,11,20,21] and self.obj_comm.admin_cmd != self.obj_know.perv_cmd:
-                print(self.obj_comm.admin_cmd)
                 self.obj_know.perv_cmd=self.obj_comm.admin_cmd
                 return "parking"
             elif self.obj_comm.admin_cmd in [41,42,51] and self.obj_comm.admin_cmd != self.obj_know.perv_cmd:
@@ -19,5 +18,4 @@ class Analysis:
             elif y in [10,12]:
                 return 3
             else:
-                print("No Value")
                 return 0
