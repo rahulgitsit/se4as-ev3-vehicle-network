@@ -1,4 +1,4 @@
-from pybricks.messaging import BluetoothMailboxServer, NumericMailbox, LogicMailbox
+from pybricks.messaging import BluetoothMailboxServer, NumericMailbox, LogicMailbox, TextMailbox
 
 
 class Communication:
@@ -25,6 +25,7 @@ class Communication:
         self.mbox1_server_ack=NumericMailbox('ack1',self.server)
         self.mbox1_travel=NumericMailbox('travel_distance1',self.server)
         self.mbox1_restart=LogicMailbox('restart1',self.server)
+        self.mbox1_sensor=TextMailbox("sensor1",self.server)
         
         # emergency vehicle mailbox
         self.embox_id = NumericMailbox("id2", self.server)
@@ -37,6 +38,7 @@ class Communication:
         self.embox_travel=NumericMailbox("travel_distance2",self.server)
         self.embox_emergencyover = NumericMailbox("emergency1", self.server)
         self.embox_restart=LogicMailbox('restart2',self.server)
+        self.embox_sensor=TextMailbox("sensor2",self.server)
 
         #read from pc_client
         self.admin_cmd=self.admin_command.read()
@@ -52,6 +54,7 @@ class Communication:
         self.front_crash=self.mbox1_crash.read()
         self.front_ack=self.mbox1_server_ack.read()
         self.front_travel=self.mbox1_travel.read()
+        self.front_sensor=self.mbox1_sensor.read()
 
         #read from emergency vehicle
         self.second_id = self.embox_id.read()
@@ -63,3 +66,4 @@ class Communication:
         self.second_emerover=self.embox_emergencyover.read()
         self.second_ack=self.embox_server_ack.read()
         self.second_travel=self.embox_travel.read()
+        self.second_sensor=self.embox_sensor.read()
