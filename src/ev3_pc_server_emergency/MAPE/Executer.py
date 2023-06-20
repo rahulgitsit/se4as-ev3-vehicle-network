@@ -27,7 +27,7 @@ class Executer:
             print()
             self.obj_comm.mbox1_parking.send(int(list1[1]))
             self.obj_comm.front_parking=self.obj_comm.mbox1_parking.read()
-            while self.obj_comm.front_parking!=300+self.obj_comm.parkcount:
+            while self.obj_comm.front_parking!=300+self.obj_knw.parkcount:
                 self.obj_comm.mbox1_parking.send(int(list1[1]))
                 self.obj_comm.front_parking=self.obj_comm.mbox1_parking.read()
         elif int(list1[1])==666:
