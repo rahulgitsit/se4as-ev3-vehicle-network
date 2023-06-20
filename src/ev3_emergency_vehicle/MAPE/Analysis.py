@@ -48,14 +48,14 @@ class Analysis:
             return "right"
 
     #obstacle detected
-    def obstacle_detection(self,dis):
-        x=dis
+    def obstacle_detection(self):
+        x=self.obj_know.distance
         if x< 180 and self.obj_know.emergency==1 and self.obj_know.back_from_emerg==0:
             return True
     
     #park color detection
-    def park_spot_det(self,rgb):
-        cr=rgb
+    def park_spot_det(self):
+        cr= self.obj_know.rgb
         x=self.detectable_colors(cr)
         if x=="GREEN" and self.obj_know.back_from_emerg==1:
             return True
