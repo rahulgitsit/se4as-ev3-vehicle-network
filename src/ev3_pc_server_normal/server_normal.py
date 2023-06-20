@@ -9,7 +9,7 @@ from MAPE import Communication, Moniter,Analysis,Planner,Executer,Knowledge
 if __name__=='__main__':
     comm=Communication.Communication()
     know=Knowledge.Knowledge()
-    moniter=Moniter.Moniter(comm)
+    moniter=Moniter.Moniter(comm,know)
     analyser=Analysis.Analysis(comm,know)
     planner=Planner.Planner(comm,know)
     executer=Executer.Executer(comm,know)
