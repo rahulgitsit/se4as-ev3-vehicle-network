@@ -30,29 +30,29 @@ if __name__=="__main__":
     comm.connect_server()
     while True: 
         comm.read_all_values()
-        rgb,reflection,color,distance,touch= moniter.sensor_reader()
+        moniter.sensor_reader()
         if knowledge.emergency==0:
             t=analyser.emerg_alert()
 
         if t in [10,12]:
             y=analyser.direction_decider()
             planner.emerg_situation(y,t)
-            executer.emerg_movement(color)
+            executer.emerg_movement()
             t=False
         if knowledge.emergency==1:
-            planner.speedcontrol(distance)
-            p=analyser.park_spot_det(rgb)
+            planner.speedcontrol()
+            p=analyser.park_spot_det()
             if p:
                 x=planner.park_planner(y)
                 executer.parker(x)
                 planner.post_parking()
-            d=analyser.obstacle_detection(distance)
+            d=analyser.obstacle_detection()
             if d:
                 planner.uturn_planning()
                 executer.vehicle_detection()
-            executer.impact_det(touch)
-            robo=planner.robotmovement(reflection)
-            executer.robotaction(robo,distance,color,reflection,rgb)
+            executer.impact_det()
+            robo=planner.robotmovement()
+            executer.robotaction(robo)
             
             
             
