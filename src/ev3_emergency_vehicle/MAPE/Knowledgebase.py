@@ -83,3 +83,9 @@ class Knowledgebase:
         self.turning=0
 
         self.istouch=0
+
+        self.rgb=[]
+        self.reflection=0
+        self.color=""
+        self.distance=0
+        self.touch=False
