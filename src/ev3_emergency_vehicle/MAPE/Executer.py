@@ -1,6 +1,7 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.media.ev3dev import  SoundFile
-
+from pybricks.parameters import Port, Color
+from pybricks.tools import DataLog, StopWatch, wait
 
 class Executer:
     def __init__(self,obj_know,obj_ev3,obj_comm):
@@ -61,7 +62,13 @@ class Executer:
 
 
 
-    def robotaction(self,a): # movement of robot
+    def robotaction(self,a,distance,color,reflection,rgb): # movement of robot
+        if color!=None and reflection!=None and rgb!=None:
+            s=str(color)+";"+str(reflection)+";"+str(rgb)
+            self.obj_comm.embox_sensor.send(s)
+        self.obj_comm.embox_distance.send(distance)
+        self.obj_comm.embox_speed.send(self.obj_know.DRIVE_SPEED)
+        self.obj_comm.embox_lane.send(self.obj_know.lane)
         if a==True:
             self.obj_know.robot.drive(self.obj_know.DRIVE_SPEED, self.obj_know.turn_rate)
             self.obj_know.last_deviation=self.obj_know.deviation
